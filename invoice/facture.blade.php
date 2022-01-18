@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+@php
+    $document = $invoice;
+    $doctype = "Facture";
+@endphp
+
 <html>
 
 <head>

@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+@php
+    $document = $estimate;
+    $doctype = "Devis";
+@endphp
+
 <html>
 
 <head>
