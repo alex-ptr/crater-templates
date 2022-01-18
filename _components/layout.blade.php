@@ -37,6 +37,7 @@
     </style>
 </head>
     <body>
+        @include('app.pdf._utils.format');
         {{$slot}}
     </body>
 </html>

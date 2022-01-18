@@ -18,26 +18,20 @@
     @endcomponent
 
     {{-- ARTICLES --}}
-    @component('app.pdf._components.articles')
+    @component('app.pdf._components.items.list')
     @endcomponent
 
-    @component('app.pdf._components.totaux')
+    @component('app.pdf._components.itmes.total')
     @endcomponent
     
     {{-- MENTIONS --}}
-    @component('app.pdf._components.paiement')
+    @component('app.pdf._components.payment')
     @endcomponent
     
-    @component('app.pdf._components.notes')
+    @component('app.pdf._components.terms')
     @endcomponent
 
     {{-- FOOTER --}}
     @component('app.pdf._components.footer')
-        @slot('page')
-            1
-        @endslot
-        @slot('nb_pages')
-            2
-        @endslot
     @endcomponent
 @endcomponent
