@@ -1,10 +1,6 @@
 @php
 
-function formatNumber($number){
-    return format_money_pdf($number, $document->customer->currency) ;
-}
-
-function formatUnit($unit){
+function format_unit($unit){
         if (empty($unit) || ($unit === "pièce")) {
         return null;
     }

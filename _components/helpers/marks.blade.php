@@ -24,7 +24,6 @@
     #pliure-2{
         top:19.8cm;
     }
-
 </style>
 
 <div id="fenetre"></div>

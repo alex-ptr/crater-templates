@@ -1,23 +1,26 @@
 <div class="section">
     <table class="align-right table-cell-padding" width="30%">
-        {{-- Remise --}} 
-        <tr>
-            <th class="font-regular border-top">
-                Sous-total HT
-            </th>
-            <td class="txt-right border-top">
-                {!!$subtotal!!}
-            </td>
-        </tr>
-        {{-- Total HT --}}
-        <tr>
-            <th class="font-regular">
-                Remise {!!$discount!!}
-            </th>
-            <td class="txt-right">
-                {!!$discountValue!!}
-            </td>
-        </tr>
+        @if ($discount)
+            {{-- SUBTOTAL --}} 
+            <tr>
+                <th class="font-regular border-top">
+                    Sous-total HT
+                </th>
+                <td class="txt-right border-top">
+                    {!!$subtotal!!}
+                </td>
+            </tr>
+            {{-- DISCOUNT --}}
+            <tr>
+                <th class="font-regular">
+                    Remise {!!$discount!!}
+                </th>
+                <td class="txt-right">
+                    {!!$discountValue!!}
+                </td>
+            </tr>
+        @endif
+        {{-- TOTAL HT --}}
         <tr>
             <th class="border-top">
                 Total HT
