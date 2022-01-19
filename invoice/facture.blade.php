@@ -1,4 +1,4 @@
-@component('app.pdf._components.layout')
+@component('app.pdf.layout')
     @slot('title', $invoice->invoice_number)
 
     {{-- HEADER --}}
