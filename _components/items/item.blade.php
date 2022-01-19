@@ -1,35 +1,12 @@
-<style text="text/css">
-
-    /* TEMP ----------------------- */
-
-</style>
-
-@php 
-
-function hasVAT($item) {
-    if ( ($document->tax_per_item === 'YES') && ($item->taxes[0]->percent > 0) ) {
-        return true;
-    }
-    return false;
-}
-
-function getVATPercent($item) {
-    if ( ($document->tax_per_item === 'YES') && ($item->taxes[0]->percent > 0) ) {
-        return $item->taxes[0]->percent . " %"; 
-    }
-    return "-";
-}
-
-@endphp
-
 <tr>
-
-    {{$index}}
-    {{$item}}
-    <th>{{$index}}</th>
-    <td>{{$description}}</td>
-    <td>{{$item->quantity}} {!! formatUnit($unit) !!}</td>
-    <td>{!! formatNumber($item->price) !!}</td>
-    <td>{!! getVATPercent($item) !!}</td>
-    <td>{!! formatNumber($item->total) !!}</td>
+    <th class="align-top txt-center">{!!$index!!}</th>
+    <td class="align-top">
+        <p>{!!$name!!}</p>
+        <p class="font-small">{!!$description!!}</p>
+    </td>
+    <td class="align-top txt-right">{{$quantity}}{!! $unit !!}</td>
+    <td class="align-top txt-right">{!!$price!!}</td>
+    <td class="align-top txt-right">{!!$discount!!}</td>
+    <td class="align-top txt-right">{!!$tax_percent!!}</td>
+    <td class="align-top txt-right">{!!$total!!}</td>
 </tr>

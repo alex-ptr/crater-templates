@@ -13,11 +13,13 @@
 </style>
 
 <footer>
-    @php
-
-        // DOMPDF API
-        // https://github.com/dompdf/dompdf/wiki/Usage
-        
+    <script type="text/php">
+        /**
+         * DOMPDF API
+         * 
+         * @DOCS : https://github.com/dompdf/dompdf/wiki/Usage
+         * @REMINDER: set enable_php to true in config/dompdf.php, and keep "<script type="text/php">" instead of blade @php tag to evaluate php at build time
+        */
         if ( isset($pdf) ) {
             $page_width = $pdf->get_width();
             $page_height = $pdf->get_height();
@@ -40,11 +42,11 @@
             //$y = $page_height - 2 * $text_height - 24;
 
             // Generate a line 
-            $pdf->line(16, $y, $w - 32, $y, $color, $thickness);
+            $pdf->line(16, $y, $page_width - 32, $y, $color, $thickness);
 
             // generated text written to every page after rendering
             $pdf->page_text($x, $y, "{PAGE_NUM}/{PAGE_COUNT}", $font, $size, $color);
         }
+    </script>
 
-    @endphp
 </footer>
