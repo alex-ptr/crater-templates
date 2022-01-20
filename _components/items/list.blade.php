@@ -1,6 +1,6 @@
 <div class="section">
-    <table width="100%" class="table-cell-padding">
-        <tr>
+    <table width="100%" class="table-cell-padding background-row-odd border-bottom">
+        <tr class="background">
             <th width="2%" class="txt-center border-bottom">
                 #
             </th>
@@ -13,14 +13,16 @@
             <th width="10%" class="txt-right border-bottom">
                 Prix U
             </th>
-            @if($hasDiscount)
+            @if($show_discount_column)
                 <th width="10%" class="txt-right border-bottom">
                     Remise
                 </th>
             @endif
-            <th width="10%" class="txt-right border-bottom">
-                TVA
-            </th>
+            @if($show_tax_column)
+                <th width="10%" class="txt-right border-bottom">
+                    TVA
+                </th>
+            @endif
             <th width="10%" class="txt-right border-bottom">
                 Total
             </th>

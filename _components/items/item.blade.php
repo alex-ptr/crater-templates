@@ -6,10 +6,20 @@
     </td>
     <td class="align-top txt-right">{{$quantity}}{!! $unit !!}</td>
     <td class="align-top txt-right">{!!$price!!}</td>
-    @if($discount)
+    @if($show_discount_column)
         <td class="align-top txt-right">{!!$discount!!}</td>
     @endif
-    <td class="align-top txt-right">{!!$discount!!}</td>
-    <td class="align-top txt-right">{!!$tax_percent!!}</td>
+    @if($show_tax_column)
+        <td class="align-top txt-right">
+            @php $i = 0 @endphp
+            @foreach($taxes_percent as $tax_precent)
+                @if($i > 0)
+                    <br>
+                @endif
+                {{$tax_precent}}
+                @php $i++ @endphp
+            @endforeach
+        </td>
+    @endif
     <td class="align-top txt-right">{!!$total!!}</td>
 </tr>

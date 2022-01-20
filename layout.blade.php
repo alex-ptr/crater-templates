@@ -17,6 +17,11 @@
             padding:0;
             position: relative;
         }
+        .section-small{
+            margin: 0.5cm auto 0;
+            width: 18cm;
+            position: relative;
+        }
         /* RESET ----------------------- */
         h1, h2, h3, h4, h5, h6, p, table, tr, td, th {
             margin: 0;
@@ -42,8 +47,17 @@
         .align-top{
             vertical-align: top;
         }
+        .background {
+            background-color:rgb(240, 240, 240) !important;
+        }
+        .background-light,
+        .background-row-even tr:nth-child(even),
+        .background-row-odd tr:nth-child(odd){
+            background-color:rgb(245, 245, 245);
+        }
+
         .border{
-            border-bottom: 1px solid #000;
+            border: 1px solid #000;
         }
         .border-bottom{
             border-bottom: 1px solid #000;
@@ -66,6 +80,9 @@
         .font-small{
             font-size: 8pt;
         }
+        .margin-bottom{
+            margin-bottom: 0.5cm !important;
+        }
         .table-cell-padding th,
         .table-cell-padding td {
             padding:.1cm;
@@ -79,6 +96,9 @@
         .txt-right{
             text-align: right;
         }
+        .txt-underline{
+            text-decoration: underline;
+        }
         .txt-uppercase{
             text-transform: uppercase;
         }
@@ -86,19 +106,15 @@
 
 
         /* TEMP ----------------------- */
-        th,td{
+/*         th,td{
             border:1px dotted black;
         }
         .section{
             background-color: rgba(12,160,80,0.1);
-        }
+        } */
     </style>
 </head>
     <body>
-        @include('app.pdf._utils.format')
-            @slot('title')
-                {{$title}}
-            @endslot
         {{$slot}}
     </body>
 </html>

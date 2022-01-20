@@ -1,5 +1,5 @@
 <style text="text/css">
-    footer{
+/*     footer{
         position:absolute;
         height:1cm;
         bottom:0.5cm;
@@ -9,7 +9,7 @@
         border-top:1px solid #000;
     }
     /* TEMP ----------------------- */
-
+ */
 </style>
 
 <footer>
@@ -23,13 +23,14 @@
         if ( isset($pdf) ) {
             $page_width = $pdf->get_width();
             $page_height = $pdf->get_height();
-            
+            $margin = 15;
+
             // Styles
             $color = array(0,0,0);
-            $size = 6;  // pt
+            $size = 8;  // pt
             $font = $fontMetrics->getFont("DejaVu Sans");
             $font_bold = $fontMetrics->getFont("DejaVu Sans", "regular");
-            $thickness = 1; //pt
+            $thickness = .5; //pt
 
             // Calcule la taille 
             $dummy_text = "0/0";
@@ -37,15 +38,31 @@
             $text_height = $fontMetrics->getFontHeight($font, $size);
             
             // Position from the top left of the document in PT
-            $x = ($page_width - $text_width) / 2;
-            $y = 785; // 785pt ≃ 27.7 cm
-            //$y = $page_height - 2 * $text_height - 24;
+            $x_right = $page_width - $text_width - $margin;
+            $x_left = $margin;
+            
+            $y = $page_height - $text_height - $margin;
 
             // Generate a line 
-            $pdf->line(16, $y, $page_width - 32, $y, $color, $thickness);
+            $pdf->line($margin, $y, $page_width - $margin, $y, $color, $thickness);
 
             // generated text written to every page after rendering
-            $pdf->page_text($x, $y, "{PAGE_NUM}/{PAGE_COUNT}", $font, $size, $color);
+            $pdf->page_text(
+                $x_right, 
+                $y, 
+                "{PAGE_NUM}/{PAGE_COUNT}", 
+                $font, 
+                $size, 
+                $color
+            );
+            $pdf->page_text(
+                $x_left, 
+                $y, 
+                "SIRET : 50011559700022 - APE : 9003B/ - TVA : FR79500115597", 
+                $font, 
+                $size, 
+                $color
+            );
         }
     </script>
 

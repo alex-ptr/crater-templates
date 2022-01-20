@@ -1,8 +1,8 @@
 <tr>
     <th class="font-regular">
-        {!!name!!}
+        {!!$name!!}
     </th>
-    <td>
-        {!!value!!}
+    <td class="txt-right">
+        {!!$value!!}
     </td>
 </tr>

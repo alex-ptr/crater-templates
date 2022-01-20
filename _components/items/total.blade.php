@@ -21,22 +21,22 @@
             </tr>
         @endif
         {{-- TOTAL HT --}}
-        <tr>
-            <th class="border-top">
+        <tr class="background">
+            <th>
                 Total HT
             </th>
-            <td class="txt-right border-top txt-bold">
+            <td class="txt-right font-bold">
                 {!!$total_ht!!}
             </td>
         </tr>
         {{-- TVA --}}
         {{$slot}}
         {{-- Total TTC --}}
-        <tr>
+        <tr class="background">
             <th class="border-top border-bottom border-left">
                 Total TTC
             </th>
-            <td class="txt-right border-top border-bottom border-right txt-bold">
+            <td class="txt-right border-top border-bottom border-right font-bold">
                 {!!$total_ttc!!}
             </td>
         </tr>

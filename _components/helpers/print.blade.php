@@ -1,3 +1,3 @@
 <div class="section">
-    @php print_r($invoices); @endphp
+    @php print($data); @endphp
 </div>
