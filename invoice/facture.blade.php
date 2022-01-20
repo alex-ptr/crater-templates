@@ -1,14 +1,15 @@
+@include('app.pdf._utils.discount')
 @include('app.pdf._utils.format')
 @include('app.pdf._utils.taxes')
-
+@include('app.pdf._utils.total')
 {{-- CONFIG 
 -----------------------------------}}
 
 @php
-    $tax_per_item = $invoice->tax_per_item === "YES" ? true : false;
-    $show_discount_column = ($invoice->discount_per_item === "YES") && ($invoice->discount_val > 0);
-    $show_tax_column = $invoice->tax_per_item === "YES" ? true : false;
+    $show_discount_column = hasItemDiscount($invoice->items) || hasGlobalDiscount($invoice);
 
+    $tax_per_item = $invoice->tax_per_item === "YES" ? true : false;
+    $show_tax_column = $invoice->tax_per_item === "YES" ? true : false;
     $tax_by_percent=getTotalTaxesByPercent($invoice->items);
 @endphp
 
@@ -22,9 +23,10 @@
 
     {{-- HEADER --}}
     @component('app.pdf._components.header')
-        @slot("documentNumber", $invoice->invoice_number)
-        @slot("documentDate", $invoice->formattedInvoiceDate)
-        @slot("documentEcheance", $invoice->formattedDueDate)       
+        @slot("type", "Facture")
+        @slot("number", $invoice->invoice_number)
+        @slot("date", $invoice->formattedInvoiceDate)
+        @slot("expiry", $invoice->formattedDueDate)       
         @slot("clientTVA", $invoice->customer->getCustomFieldValueBySlug("CUSTOM_CUSTOMER_TVA"))
     @endcomponent
 
@@ -42,7 +44,7 @@
                 @slot("unit", format_unit($item->unit_name) )
                 @slot("price", format_money_pdf($item->price, $invoice->customer->currency))
                 @slot("show_discount_column",$show_discount_column)  
-                @slot("discount", format_money_pdf($item->discount_val, $invoice->customer->currency))
+                @slot("discount", getItemDiscount($item, $invoice->customer->currency))
                 @slot("show_tax_column", $show_tax_column) 
                 @slot("taxes_percent", getItemTaxesPercent($item))
                 @slot("total", format_money_pdf($item->total, $invoice->customer->currency))
@@ -53,9 +55,9 @@
 
     {{-- TOTAL --}}
     @component('app.pdf._components.items.total')
-        @slot("subtotal", "")
-        @slot("discount", $invoice->discount) {{-- Ajout percentage/fixed --}}
-        @slot("discountValue", format_money_pdf($invoice->discount_val, $invoice->customer->currency))
+        @slot("subtotal", getSubTotalWithoutDiscount($invoice))
+        @slot("discount", false) {{-- Ajout percentage/fixed --}}
+        @slot("discountValue", getTotalDiscount($invoice))
         @slot("total_ht", format_money_pdf($invoice->sub_total, $invoice->customer->currency))
         {{-- TVA LOOP --}}
         @if($invoice->tax > 0)
@@ -80,9 +82,7 @@
    
     {{-- TERMS --}}
     @component('app.pdf._components.terms')
-        @if($invoice->notes)
-            @slot("terms", $invoice->notes)
-        @endif
+        @slot("terms", $invoice->notes)
         @slot("showSign", false)
         @slot("showPaymentTerms", true)
     @endcomponent

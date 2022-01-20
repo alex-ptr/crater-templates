@@ -26,20 +26,20 @@
                 <table class="align-right table-cell-padding">
                     <tr>
                         <td colspan="2" class="border-bottom">
-                            <h1 class="txt-right">Facture</h1>
+                            <h1 class="txt-right">{{$type}}</h1>
                         </td>
                     </tr>
                     <tr>
                         <th>#</th>
-                        <td class="txt-right">{{$documentNumber}}</td>
+                        <td class="txt-right">{{$number}}</td>
                     </tr>
                     <tr>
                         <th>@lang('pdf_invoice_date')</th>
-                        <td class="txt-right">{{$documentDate}}</td>
+                        <td class="txt-right">{{$date}}</td>
                     </tr>
                     <tr>
-                        <th>@lang('pdf_invoice_due_date')</th>
-                        <td class="txt-right">{{$documentEcheance}}</td>
+                        <th>Échéance</th>
+                        <td class="txt-right">{{$expiry}}</td>
                     </tr>
                 </table>
             </td>
