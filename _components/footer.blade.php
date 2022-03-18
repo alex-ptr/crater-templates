@@ -44,7 +44,7 @@
             $pdf->page_text(
                 $x_left, 
                 $y, 
-                "SIRET : 50011559700022 - APE : 9003B/6202B - TVA : FR79500115597", 
+                "SIRET : 500 115 597 00022 - APE : 9003B/6202B - TVA : FR79 500 115 597", 
                 $font, 
                 $size, 
                 $color
