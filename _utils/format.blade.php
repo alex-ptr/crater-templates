@@ -1,9 +1,9 @@
 @php
 
 function format_unit($unit){
-        if (empty($unit) || ($unit === "pc")) {
+    if (empty($unit) || ($unit === "pc")) {
         return null;
     }
-    return $unit;
+    return " " . substr($unit, 0, 1);
 }
 @endphp

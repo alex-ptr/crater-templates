@@ -64,7 +64,7 @@
             @if ($tax_per_item)
                 @foreach ($tax_by_percent as $percent => $amount)
                     @component('app.pdf._components.items.tax')
-                        @slot("name", "TVA (" . $percent. "%)")
+                        @slot("name", "TVA " . $percent. "%")
                         @slot("value", format_money_pdf($amount, $invoice->customer->currency))
                     @endcomponent
                 @endforeach
