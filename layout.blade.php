@@ -57,19 +57,19 @@
         }
 
         .border{
-            border: 1px solid #000;
+            border: .5px solid #000;
         }
         .border-bottom{
-            border-bottom: 1px solid #000;
+            border-bottom: .5px solid #000;
         }
         .border-left{
-            border-left: 1px solid #000;
+            border-left: .5px solid #000;
         }
         .border-right {
-            border-right:1px solid #000;
+            border-right:.5px solid #000;
         }
         .border-top {
-            border-top:1px solid #000;
+            border-top:.5px solid #000;
         }
         .font-regular{
             font-weight: regular;
